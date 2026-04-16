@@ -2,9 +2,9 @@ syntax = "proto3";
 
 package api.user.v1;
 
-import "api/common/v1/common.proto";
+import "proto/common/v1/common.proto";
 
-option go_package = "github.com/topcms/api-contracts/gen/go/api/user/v1;v1";
+option go_package = "github.com/topcms/kratos-template/api/user/v1;v1";
 
 // User 为用户领域核心实体。
 message User {
