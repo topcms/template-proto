@@ -6,19 +6,81 @@ import "common/v1/common.proto";
 
 option go_package = "github.com/topcms/kratos-template/api/user/v1;v1";
 
-// User 为用户领域核心实体。
-message User {
-  int64 id = 1;
-  string name = 2;
-  string avatar = 3;
+// UserInfo 为用户信息实体。
+message UserInfo {
+  int64  id           = 1;
+  string user_code    = 2;
+  string user_name    = 3;
+  string user_type    = 4;
+  string real_name    = 5;
+  string user_desc    = 6;
+  string email        = 7;
+  int32  gender       = 8;
+  string tel          = 9;
+  string mobile       = 10;
+  string dept_code    = 11;
+  string avatar       = 12;
+  string avatar_thumb = 13;
+  int32  is_account   = 14;
+  int32  state        = 15;
+  string created_by   = 16;
+  string created_at   = 17;
+  string updated_by   = 18;
+  string updated_at   = 19;
 }
 
-message GetUserRequest {
+// UserList 为用户列表数据结构。
+message UserList {
+  repeated UserInfo list  = 1;
+  int64             total = 2;
+}
+
+// ReqUserDetail 单个用户查询请求。
+message ReqUserDetail {
   api.common.v1.Metadata metadata = 1;
-  int64 id = 2;
+  int64                  id       = 2;
 }
 
-message GetUserResponse {
+// RspUserDetail 单个用户查询响应。
+message RspUserDetail {
   api.common.v1.Reply meta = 1;
-  User user = 2;
+  UserInfo            user = 2;
+}
+
+// ReqUserCreate 用户新增请求。
+message ReqUserCreate {
+  api.common.v1.Metadata metadata = 1;
+  UserInfo               user     = 2;
+}
+
+// RspUserCreate 用户新增响应。
+message RspUserCreate {
+  api.common.v1.Reply meta = 1;
+  UserInfo            user = 2;
+}
+
+// ReqUserUpdate 用户更新请求。
+message ReqUserUpdate {
+  api.common.v1.Metadata metadata = 1;
+  UserInfo               user     = 2;
+}
+
+// RspUserUpdate 用户更新响应。
+message RspUserUpdate {
+  api.common.v1.Reply meta = 1;
+  UserInfo            user = 2;
+}
+
+// ReqUserList 用户列表查询请求。
+message ReqUserList {
+  api.common.v1.Metadata metadata  = 1;
+  int64                  page      = 2;
+  int64                  size      = 3;
+}
+
+// RspUserList 用户列表查询响应。
+message RspUserList {
+  api.common.v1.Reply meta  = 1;
+  int64               total = 2;
+  repeated UserInfo   list  = 3;
 }
